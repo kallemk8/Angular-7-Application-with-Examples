@@ -21,9 +21,9 @@ deploy_stage:
     - ./node_modules/@angular/cli/bin/ng build    
     - cd dist/
     - ls
-    - sudo sshpass -V
-    - sudo export SSHPASS=$USER_PASS 
-    - sudo sshpass -e scp -o stricthostkeychecking=no -r . ubuntu@18.136.149.198 /var/opt/gitlab/nginx/html/angulerTest/
+    - sshpass -V
+    - export SSHPASS=$USER_PASS 
+    - sshpass -e scp -o stricthostkeychecking=no -r . ubuntu@18.136.149.198 /var/opt/gitlab/nginx/html/angulerTest/
     - ls    
 
 # deploy_production:
