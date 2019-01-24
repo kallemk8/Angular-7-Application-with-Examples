@@ -6,6 +6,7 @@ cache:
 
 deploy_stage:
   stage: deploy
+  tags: [deploy]
   environment: Staging
   only:
     - master
@@ -20,6 +21,7 @@ deploy_stage:
 
 deploy_production:
   stage: deploy
+  tags: [deploy]
   environment: Production
   only:
     - tags
