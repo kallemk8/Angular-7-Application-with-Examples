@@ -1,0 +1,26 @@
+<div class="mainmenu" style="background:green;">
+  <div class="fixed-menu">
+    <div class="logo list-group-item" ><img src="https://loadhog.com/wp-content/uploads/2017/10/SampleLogo.png" style="max-width:100%;"/></div>
+    <!-- <div class="logo-text">Company Name</div> -->
+    <div class="cmsnavmenu">
+      <ul class="list-group">
+        
+        <li class="list-group-item" *ngIf='!userid'><a  routerLink='login' >Login</a></li>
+        <li class="list-group-item" *ngIf='userid'><a  (click)="onlogout()" >Logout</a></li>
+        <li class="list-group-item"><a href="#"  (click)="onSelect('latestnews')">Latest News</a></li>
+        <li class="list-group-item"><a href="#"  (click)="onSelect('statenews')">State News</a></li>
+        <li class="list-group-item"><a href="#"  (click)="onSelect('nationalnews')">National News</a></li>
+        <li class="list-group-item"><a href="#"  (click)="onSelect('bannernews')">Banner News</a></li>
+        <li class="list-group-item"><a href="#"  (click)="onSelect('mainnews')">Main News</a></li>
+        <li class="list-group-item"><a href="#"  (click)="onSelect('latestnews')">Latest News</a></li>
+        <li class="list-group-item"><a href="#"  (click)="onSelect('statenews')">State News</a></li>
+        <li class="list-group-item"><a href="#"  (click)="onSelect('nationalnews')">National News</a></li>
+        <li class="list-group-item"><a href="#"  (click)="onSelect('nationalnews')">National News</a></li>
+
+      </ul>
+    </div>
+    <ul>
+      
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+
+
+<table class="table" >
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Image</th>
+    <th>Time</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let content of data; let i = index;">
+    <td>{{i}}</td>
+    <td>{{content.title}}</td>
+    <td><img src="{{content.thumb}}" width="100px" /></td>
+    <td>{{content.timestamp}}</td>
+  </tr>
+</tbody>
+</table>
+
+<app-recipe></app-recipe>
