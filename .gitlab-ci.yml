@@ -23,7 +23,7 @@ deploy_stage:
     - ls
     - sshpass -V
     - export SSHPASS=$USER_PASS 
-    - sshpass -e scp -o stricthostkeychecking=no -r . ubuntu@18.136.149.198 /var/opt/gitlab/nginx/html/angulerTest/
+    - sshpass -e scp -i $SSH_PRIVATE_KEY  ubuntu@18.136.149.198 /var/opt/gitlab/nginx/html/angulerTest/
     - ls    
 
 # deploy_production:
