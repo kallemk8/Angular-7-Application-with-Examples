@@ -5,7 +5,7 @@ cache:
     - node_modules/
 
 before_script:
- - apt-get update -qq && apt-get install -y -qq sshpass
+ -sudo apt-get update -qq && apt-get install -y -qq sshpass
 
 deploy_stage:
   stage: deploy
@@ -14,16 +14,16 @@ deploy_stage:
   only:
     - master
   script:
-    - rm ./package-lock.json
-    - npm install
+    - sudo rm ./package-lock.json
+    - sudo npm install
     # - ./node_modules/@angular/cli/bin/ng test --progress false --single-run=true --watch=false
     # - ./node_modules/@angular/cli/bin/ng e2e --progress false --watch=false
-    - ./node_modules/@angular/cli/bin/ng build    
+    - sudo ./node_modules/@angular/cli/bin/ng build    
      - cd dist/
     - ls
-    - sshpass -V
-    - export SSHPASS=$USER_PASS 
-    - sshpass -e scp -o stricthostkeychecking=no -r . ubuntu:/var/opt/gitlab/nginx/html/angulerTest/
+    - sudo sshpass -V
+    - sudo export SSHPASS=$USER_PASS 
+    - sudo sshpass -e scp -o stricthostkeychecking=no -r . ubuntu:/var/opt/gitlab/nginx/html/angulerTest/
     - ls    
 
 # deploy_production:
