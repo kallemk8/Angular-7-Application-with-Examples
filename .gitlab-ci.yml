@@ -25,7 +25,7 @@ deploy_stage:
     - pwd
     #- cd udemy
     #- ls
-    - scp -i /var/opt/gitlab/.ssh/switch.pem ./e2e/ ubuntu@18.136.149.198 /var/opt/gitlab/nginx/html/angulerTest/
+    - scp -i /var/opt/gitlab/.ssh/switch.pem /home/gitlab-runner/builds/9AjC3Hsk/0/gitlab/srikanth/angularcli/e2e ubuntu@18.136.149.198 /var/opt/gitlab/nginx/html/angulerTest/
     # - sshpass -V
     # - export SSHPASS=$USER_PASS 
     # - sshpass -e scp -i $SSH_PRIVATE_KEY  ubuntu@18.136.149.198 /var/opt/gitlab/nginx/html/angulerTest/
