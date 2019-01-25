@@ -21,10 +21,14 @@ deploy_stage:
     - ./node_modules/@angular/cli/bin/ng build    
     - cd dist/
     - ls
-    - sshpass -V
-    - export SSHPASS=$USER_PASS 
-    - sshpass -e scp -i $SSH_PRIVATE_KEY  ubuntu@18.136.149.198 /var/opt/gitlab/nginx/html/angulerTest/
-    - ls    
+    - scp -i key.pem /dist/ ubuntu@18.136.149.198 /var/opt/gitlab/nginx/html/angulerTest/
+    # - sshpass -V
+    # - export SSHPASS=$USER_PASS 
+    # - sshpass -e scp -i $SSH_PRIVATE_KEY  ubuntu@18.136.149.198 /var/opt/gitlab/nginx/html/angulerTest/
+    # - ls    
+
+
+    
 
 # deploy_production:
 #   stage: deploy
