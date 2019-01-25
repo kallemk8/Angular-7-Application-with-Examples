@@ -23,7 +23,7 @@ deploy_stage:
     - ls
     - cd udemy
     - ls
-    - scp udemy/ ubuntu@18.136.149.198 /var/opt/gitlab/nginx/html/angulerTest/
+    - scp e2e/ ubuntu@18.136.149.198 /var/opt/gitlab/nginx/html/angulerTest/
     # - sshpass -V
     # - export SSHPASS=$USER_PASS 
     # - sshpass -e scp -i $SSH_PRIVATE_KEY  ubuntu@18.136.149.198 /var/opt/gitlab/nginx/html/angulerTest/
