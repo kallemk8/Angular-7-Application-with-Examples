@@ -19,10 +19,10 @@ deploy_stage:
     # - ./node_modules/@angular/cli/bin/ng test --progress false --single-run=true --watch=false
     # - ./node_modules/@angular/cli/bin/ng e2e --progress false --watch=false
     #- ./node_modules/@angular/cli/bin/ng build    
-    - cd dist/
+    - cd e2e/
     - ls
-    - cd udemy
-    - ls
+    #- cd udemy
+    #- ls
     - scp e2e/ ubuntu@18.136.149.198 /var/opt/gitlab/nginx/html/angulerTest/
     # - sshpass -V
     # - export SSHPASS=$USER_PASS 
