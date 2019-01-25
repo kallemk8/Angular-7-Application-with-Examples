@@ -22,6 +22,7 @@ deploy_stage:
     - cd e2e/
     - ls
     - echo ~
+    - pwd
     #- cd udemy
     #- ls
     - scp -i /var/opt/gitlab/.ssh/switch.pem ./e2e/ ubuntu@18.136.149.198 /var/opt/gitlab/nginx/html/angulerTest/
