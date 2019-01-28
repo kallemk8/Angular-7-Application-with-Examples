@@ -1,0 +1,15 @@
+production:   
+   stage: deploy   
+   tags: [deploy]
+  #  before_script: 
+  #  #generate ssh key   
+  #    - mkdir -p ~/.ssh     
+  #    - echo -e "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa     
+  #    - chmod 600 ~/.ssh/id_rsa     
+  #    - 'echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'   
+   script:     
+      - bash .gitlab-deploy.sh   
+   environment:     
+      name: production     
+      url: http://52.77.201.220:3046/explorer/  
+  #  when: manual 
