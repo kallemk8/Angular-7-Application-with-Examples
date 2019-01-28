@@ -1,50 +1,47 @@
-image: trion/ng-cli-karma
+image: node:10
 
-cache:
-  paths:
-    - node_modules/
+stages:
+  - build
+  - deploy
 
-before_script:
-#  - sudo apt-get update -qq && apt-get install -y -qq sshpass
-
-deploy_stage:
-  stage: deploy
-  tags: [deploy]
-  environment: Staging
-  only:
+build: 
+  stage: 'build'
+  script: 
+    # - apt update
+    # - apt install -y curl
+    # - apt install -y nodejs
+    # - npm install -y npm@latest -g
+    # - npm install -g @angular/cli
+    # - cd /builds/jsquared-truck-app/truck-app
+    # - rm package-lock.json
+    - npm install
+    - cd ..
+    - ng build --prod
+  cache: 
+    paths: 
+      - /dist/
+  artifacts: 
+    when: on_success    
+    name: "$CI_JOB_NAME-$CI_COMMIT_REF_NAME"
+    paths: 
+      - /dist/
+  only: 
     - master
-  script:
-    #- sudo rm ./package-lock.json
-    #- npm install
-    # - ./node_modules/@angular/cli/bin/ng test --progress false --single-run=true --watch=false
-    # - ./node_modules/@angular/cli/bin/ng e2e --progress false --watch=false
-    #- ./node_modules/@angular/cli/bin/ng build    
-    - cd e2e/
-    - ls
-    - echo ~
-    - pwd
-    #- cd udemy
-    #- ls
-    - scp -i /var/opt/gitlab/.ssh/switch.pem -r /home/gitlab-runner/builds/9AjC3Hsk/0/gitlab/srikanth/angularcli/e2e /var/opt/gitlab/nginx/html/angulerTest/ ubuntu@18.136.149.198:~ 
-    # - sshpass -V
-    # - export SSHPASS=$USER_PASS 
-    # - sshpass -e scp -i $SSH_PRIVATE_KEY  ubuntu@18.136.149.198 /var/opt/gitlab/nginx/html/angulerTest/
-    # - ls    
-
-
     
-
-# deploy_production:
-#   stage: deploy
-#   tags: [deploy]
-#   environment: Production
-#   only:
-#     - tags
-#   script:
-#     - rm ./package-lock.json
-#     - npm install
-#     # - ./node_modules/@angular/cli/bin/ng test --progress false --single-run=true  --watch=false
-#     # - ./node_modules/@angular/cli/bin/ng e2e --progress false --watch=false
-#     - ./node_modules/@angular/cli/bin/ng build
-#     - cd /var/opt/gitlab/nginx/html/angulerTest/
-#     - ls
+deploy: 
+  stage: 'deploy'
+  script: 
+    # - apt update
+    # - apt install -y software-properties-common
+    # - apt install -y python-dev  
+    # - apt install -y python-pip
+    # - pip install awscli
+    - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+    - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+    - aws configure set region ap-southeast-1
+    - mv /var/opt/gitlab/nginx/html/angulerTest/
+    # - cd dist
+    # - cd .. 
+    - aws deploy push --application-name TransitBase --s3-location $AWS_S3_LOCATION --ignore-hidden-files --source dist
+  only: 
+    - master
