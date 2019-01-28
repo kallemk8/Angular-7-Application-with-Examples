@@ -14,7 +14,7 @@ export class AppComponent {
     {
       name: "srikanth",
       content: "sample test",
-      phoneno: 9618337169
+      phoneno: 9618337169 22
     },
     {
       name: "srikanth 2",
